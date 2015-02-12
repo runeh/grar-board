@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'tallymarks';
+  src: url(/tallymark.otf);
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.tallyfont {
+    font-family: 'tallymarks';
+}

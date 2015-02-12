@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Admin-y-stray-shun!</h1>
+
+<p>
+    Board URL: <a href="/board/{{ board.id }}">/board/{{ board.id }}</a>
+    <br>
+    main info here
+    glopts:
+    <br>
+    <label><input type="checkbox"> enable api</label><br>
+    <label><input type="checkbox"> Use custom CSS</label><br>
+    <button>Delete</button>    
+</p>
+
+
+    <h2>Current data</h2>
+
+    <div class="datacontainer">
+        <form action="./admin/data" method="post">
+            <textarea name="data">{{ board.data | prettyjson }}</textarea>
+            <br>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
+
+<h2>Style</h2>
+
+<div class="datacontainer">
+    <form action="./admin/style" method="post">
+        <label>
+            <input type="checkbox" 
+                    name="includeDefaultStyles"
+                    {{ "checked" if board.includeDefaultStyles }}>
+            Include default styles
+        </label>
+        <br>
+        Custom style rules:
+        <br>
+        <textarea name="styles">{{ board.styles }}</textarea>
+        <br>
+        <button type="submit">Update</button>
+
+    </form>
+</div>
+
+
+
+
+<h2>Board API operations</h2>
+<p>
+    <dl>
+        {% for op in boardDef.operations %}
+            <dt>{{ op.name }}:</dt>
+            <dd>{{ op.method | upper }}: {{ rootApiUrl }}{{ op.name }}</dd>
+            <dd>inputs: {{ op.inputs | join(', ') }}</dd>
+            <dd>{{ op.description }}</dd>
+        {% endfor %}
+    </dl>
+</p>
+
+
+{% endblock %}

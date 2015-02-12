@@ -1,0 +1,20 @@
+{% extends 'boardbase.html' %}
+
+{% block boardbody %}
+    {% if data.topTitle %}
+        <h1 id="toptitle">{{data.topTitle}}</h1>
+    {% endif %}
+    <div id="tallycontainer">
+        <table class="tallyitem">
+            {% for item in data.items %}
+                <tr>
+                    <th>{{item.title}}</th>
+                    <td>{{item.count}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% if data.bottomTitle %}
+        <h1 id="bottomtitle">{{data.bottomTitle}}</h1>
+    {% endif %}
+{% endblock %}

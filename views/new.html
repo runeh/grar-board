@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<style>
+    
+.typeselector {
+    display: inline-block;
+    width: 200px;
+    border: solid thin black;
+}
+
+</style>
+
+<h1>New board</h1>
+
+What kind of board?
+
+<div>
+    {% for foo, board in boardTypes %} 
+        <div class="typeselector">
+            <form method="post" action="/new/{{board.type}}">
+            <label>
+                <h2>{{board.name}}</h2>
+                {{board.description}}
+            </label>
+            <p>
+                <a href="/example/{{board.type}}" target="_blank">See an example</a>
+                <button type="submit">create</button>
+            </p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
