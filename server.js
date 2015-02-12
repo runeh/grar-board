@@ -4,8 +4,9 @@ var bluebird = require('bluebird');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
-
 var shortId = require('shortid');
+
+var storageFactory = require("./lib/storage");
 
 shortId.seed(150692748012255356);
 
@@ -43,11 +44,11 @@ function startServer(port, path, callback) {
 
     config.storageUri = "fs://./teststorage";
 
-    var storage = require("./storage").getStorage(config.storageUri);
+    var storage = storageFactory.getStorage(config.storageUri);
 
     app.use(addToRequestMiddleware("storage", storage));
     
-    require('./routes')(app);
+    require('./lib/routes')(app);
 
     console.log("Listening on", port);
     app.listen(port);
