@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Refresh" content="300">
 <title>tallyboard</title>
 
 {% if board.includeDefaultStyles %}
 <link rel="stylesheet" href="/boardstyles.css">
 {% endif %}
 
+{% if board.styles %}
 <style>
 {{board.styles}}
 </style>
+{% endif %}
 
 <section id="main" class="{{ board.type }}-board">
+
 {% block boardbody %}
 {% endblock %}
 </section>
-
-<!-- <script src="boardmain.js" defer></script> -->
