@@ -1,0 +1,37 @@
+{% extends 'boardbase.html' %}
+
+{% block boardbody %}
+    <script>
+        window.addEventListener("load", function() {
+            var toTime = Date.parse("{{data.endTime}}");
+            var ele = document.querySelector("#countdown");
+            update();
+            window.setInterval(update, 200);
+
+            function update() {
+                var now = new Date();
+                ele.textContent = formatDelta(toTime - now);
+            }
+
+            function formatDelta(deltaMillis) {
+                var rest = Math.round(deltaMillis / 1000);
+                var days = Math.floor(rest / (60 * 60 * 24));
+                rest = rest % (60 * 60 * 24);
+                var hours = Math.floor(rest / (60 * 60));
+                rest = rest % (60 * 60);
+                var mins = Math.floor(rest / 60);
+                var secs = rest % 60;
+                return zp(days) + ":" + zp(hours) + ":" + zp(mins) + ":" + zp(secs);
+            }
+
+            function zp(n) { return ("00" + n).slice(-2) }
+
+        });
+    </script>
+
+    <h1 id="toptitle">{{data.topTitle}}</h1>
+    <div id="countdowncontainer">
+        <h1 id="countdown"></h1>
+    </div>
+    <h1 id="bottomtitle">{{data.bottomTitle}}</h1>
+{% endblock %}
