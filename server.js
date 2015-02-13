@@ -1,6 +1,5 @@
 var express = require('express');
 var nunjucks = require('nunjucks');
-var bluebird = require('bluebird');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
