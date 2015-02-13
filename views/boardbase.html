@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tallyboard</title>
+
+{% if board.includeDefaultStyles %}
+<link rel="stylesheet" href="/boardstyles.css">
+{% endif %}
+
+<style>
+{{board.styles}}
+</style>
+
+<section id="main" class="{{ board.type }}-board">
+{% block boardbody %}
+{% endblock %}
+</section>
+
+<!-- <script src="boardmain.js" defer></script> -->
