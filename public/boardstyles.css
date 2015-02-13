@@ -3,10 +3,36 @@
   src: url(/tallymark.otf);
 }
 
-body {
-    font-family: sans-serif;
-}
-
 .tallyfont {
     font-family: 'tallymarks';
+}
+
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #ACCFC4;
+    color: #3D504B;
+}
+
+.tally-board h1 {
+    font-size: 70px;
+}
+
+.tally-board #tallycontainer {
+    border: solid thin #799D92;
+    max-width: 400px;
+    text-align: center;
+}
+
+.tally-board table {
+    font-size: 50px;
+    width: 100%;
+}
+
+.tally-board td {
+    text-align: right;
+}
+
+.tally-board th {
+    text-align: left;
 }

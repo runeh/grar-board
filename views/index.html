@@ -2,22 +2,37 @@
 
 {% block body %}
 
-<h1>Heloes!</h1>
+<p>
+    grar board is a site app for making simple boards.
+    Useful for showing off stuff in your depressing open
+    office plan.
+</p>
 
-Tally board is a simple app for keeping counts of things, and displaying them on a wall board or similar.
-<br>
-<a href="/new">Create a board</a>
-|
-<a href="/example/tally">tally</a>
-|
-<a href="/example/tallymark">tallymark</a>
-|
-<a href="/example/countdown">countdown</a>
-|
-<a href="/example/countup">countup</a>
-|
-<a href="/example/count">count</a>
-|
-<a href="/example/message">message</a>
+<p>
+    The boards can be styled easily by adding your own
+    CSS. There are also HTTP resources for changing the
+    values of the boards from scripts and bots.
+</p>
+
+<p>
+
+<h2>Create your own board</h2>
+
+<p>
+    {% for foo, board in boardTypes %} 
+        <div class="typeselector">
+            <form method="post" action="/new/{{board.type}}">
+                <label>
+                    <h2>{{board.name}}</h2>
+                    {{board.description}}.
+                    <a href="/example/{{board.type}}" target="_blank">Example</a>
+                </label>
+                <p>
+                    <button type="submit">create</button>
+                </p>
+            </form>
+        </div>
+    {% endfor %}
+</p>
 
 {% endblock %}

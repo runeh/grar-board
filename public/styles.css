@@ -1,0 +1,25 @@
+body {
+    font-family: sans-serif;
+    background-color: #ACCFC4;
+    color: #3D504B;
+}
+
+.typeselector {
+/*    display: inline-block;
+    width: 200px;
+*/
+    border: solid thin #799D92;
+}
+
+.datacontainer textarea {
+    min-width: 400px;
+    min-height: 200px;
+    border: solid black thin;
+    font-family: monospace;
+}
+
+dt {
+    padding-top: 1em;
+    padding-bottom: 0.3em;
+    font-weight: bold;
+}
