@@ -34,58 +34,58 @@ const remove = (data, title) => {
 
 module.exports = {
     type: 'tally',
-    name: 'Lol Tally Board',
-    view: "tally",
-    description: "Description blargh",
+    name: 'Tally Board',
+    view: 'tally',
+    description: 'Description blargh',
     initialData: {
-        topTitle: "Top title",
-        bottomTitle: "Bottom title",
+        topTitle: 'Top title',
+        bottomTitle: 'Bottom title',
         items: [
-            { title: "User 1", count: 12 },
-            { title: "User 2", count: 4 },
+            { title: 'User 1', count: 12 },
+            { title: 'User 2', count: 4 },
         ]
     },
     operations: [
         {
-            name: "remove",
+            name: 'remove',
             inputs: ['title'],
-            description: "Removes a tally item by title.",
+            description: 'Removes a tally item by title.',
             method: 'POST',
             transform: (data, post) => remove(data, post.title)
         },
         {
-            name: "set",
+            name: 'set',
             inputs: ['title', 'value'],
-            description: "Sets the count of a tally item. If the tally item does not exist, it's created.",
+            description: 'Sets the count of a tally item. If the tally item does not exist, it\'s created.',
             method: 'POST',
             transform: (data, post) => set(data, post.title, parseInt(post.count))
         },
         {
-            name: "increment",
+            name: 'increment',
             inputs: ['title', 'increment'],
-            description: "Increments the given tally item by 1. If the item does not exist, it's created with a value of 1.",
+            description: 'Increments the given tally item by 1. If the item does not exist, it\'s created with a value of 1.',
             method: 'POST',
             transform: (data, post) => incrementBy(data, post.title, 1)
         },
         {
-            name: "decrement",
+            name: 'decrement',
             inputs: ['title'],
             method: 'POST',
-            description: "Decrements the given tally item by 1. If the item does not exist, it's created with a value of -1.",
+            description: 'Decrements the given tally item by 1. If the item does not exist, it\'s created with a value of -1.',
             transform: (data, post) => incrementBy(data, post.title, -1)
         },
         {
-            name: "increment_by",
+            name: 'increment_by',
             inputs: ['title', 'delta'],
             method: 'POST',
-            description: "Increments the given tally item by 'increment'. If the item does not exist, it's created with a value of 'increment'.",
+            description: 'Increments the given tally item by \'increment\'. If the item does not exist, it\'s created with a value of \'increment\'.',
             transform: (data, post) => incrementBy(data, post.title, parseInt(post.by))
         },
         {
             name: "decrement_by",
             inputs: ['title', 'delta'],
             method: 'POST',
-            description: "Increments the given tally item by 'increment'. If the item does not exist, it's created with a value of 'increment'.",
+            description: "Increments the given tally item by \'increment'\. If the item does not exist, it\'s created with a value of \'increment\'.",
             transform: (data, post) => incrementBy(data, post.title, parseInt(-post.by))
         },
     ]
